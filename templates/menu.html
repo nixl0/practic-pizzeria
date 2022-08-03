@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link id="style" rel="stylesheet" href="{% static 'css/style-light.css' %}">
+
+{% block title %}Меню{% endblock title %}
+
+{% block body %}
+<div class="foods">
+    <div class="wrapper">
+        <div class="foods__container">
+            {% for product in products %}
+                <div class="foods__serving">
+                    
+                    {% with '/image/'|add:product.pic|add:'.jpg' as pic %}
+                        <img class="serving__pic" src="{% static pic %}" alt="pizza pic">
+                    {% endwith %}
+                        
+                    <div class="serving__text">
+                        <h1 class="serving__name">{{ product.name }}</h1>
+                        <p class="serving__desc">{{ product.desc }}</p>
+                        <h5 class="serving__weight">{{ product.weight }} гр.</h5>
+                        <h2 class="serving__price">{{ product.price }} ₽</h2>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock body %}
