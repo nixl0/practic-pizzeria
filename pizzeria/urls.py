@@ -8,6 +8,7 @@ urlpatterns = [
     path('discount/', views.discount),
     path('coupon/', views.coupon),
     path('news/', views.news),
+    path('error/', views.error),
 
     path('admin/', admin.site.urls),
 ]

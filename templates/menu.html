@@ -8,8 +8,25 @@
 {% block body %}
 <div class="foods">
     <div class="wrapper">
+        <div class="foods__categories">
+
+            <label class="foods__category" for="all">
+                <p class="foods__category__text">Все</p>
+                <input class="foods__category__input" type="checkbox" name="all" id="all">
+            </label>
+
+            {% for category in categories %}
+                <label class="foods__category" for="{{ category.codename }}">
+                    <p class="foods__category__text">{{ category.title }}</p>
+                    <input class="foods__category__input" type="checkbox" name="{{ category.codename }}" id="{{ category.codename }}">
+                </label>
+            {% endfor %}
+
+        </div>
+
         <div class="foods__container">
             {% for product in products %}
+
                 <div class="foods__serving">
                     
                     {% with '/image/'|add:product.pic|add:'.jpg' as pic %}
@@ -27,4 +44,6 @@
         </div>
     </div>
 </div>
+
+<script src="{% static 'js/menu.js' %}"></script>
 {% endblock body %}

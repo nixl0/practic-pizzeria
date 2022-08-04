@@ -11,33 +11,33 @@
 
 <div class="notice">
     <div class="wrapper">
-        <!-- <img id="interior__image" src="{% static 'image/interior.png' %}" alt="Interior"> -->
 
         <div class="notice__container">
-            <div class="notice__unit">
-                <img class="notice__unit__picture" src="{% static '/image/news1.jpg' %}" alt="">
-                <p class="notice__unit__text">Lorem accusam consetetur dolore diam</p>
-            </div>
 
-            <div class="notice__unit">
-                <img class="notice__unit__picture" src="{% static '/image/news2.jpg' %}" alt="">
-                <p class="notice__unit__text">Vero rebum ut erat takimata liber voluptua nonumy dolore dolor sanctus sed nonumy sea ad no</p>
-            </div>
+            {% for notice in notices %}
+                <div class="notice__info">
+                    
+                    
+                    {% with '/image/'|add:notice.pic|add:'.jpg' as pic  %}
+                        <img class="info__picture" src="{% static pic %}" alt="">
+                    {% endwith %}
+                        
+                    <div class="info__text">
+                        <h1 class="info__headline">{{ notice.headline }}</h1>
+                        <p class="info__body">{{ notice.body }}</p>
+                        <div class="info__button">
+                            <a href="#">
+                                <div class="info__button__container">
+                                    <p class="info__button_text">{{ notice.action }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
-            <div class="notice__unit">
-                <img class="notice__unit__picture" src="{% static '/image/news3.jpg' %}" alt="">
-                <p class="notice__unit__text">Commodo elitr labore lorem adipiscing ipsum labore stet amet nulla no vero suscipit ipsum ut dolores liber amet</p>
-            </div>
+                </div>
+            {% endfor %}
 
-            <div class="notice__unit">
-                <img class="notice__unit__picture" src="{% static '/image/news4.jpg' %}" alt="">
-                <p class="notice__unit__text">Aliquam aliquyam amet ea eros kasd</p>
-            </div>
-
-            <div class="notice__unit">
-                <img class="notice__unit__picture" src="{% static '/image/news5.jpg' %}" alt="">
-                <p class="notice__unit__text">Sed nulla at rebum et magna kasd. Tincidunt diam eirmod rebum kasd iriure dolor elit eum diam iriure ea sadipscing sanctus</p>
-            </div>
+            
         </div>
     </div>
 </div>
