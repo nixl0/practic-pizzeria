@@ -2,21 +2,27 @@
  * Обработка переключения тем
  */
 
-let THEME = 'light'
-
-let themeToggler = document.querySelector('#theme-toggler')
-themeToggler.addEventListener('click', () => {
-    let style = document.querySelector('#style')
-    if (THEME == 'light') {
+ function determineTheme() {
+    const darkTheme = window.sessionStorage.getItem('theme')
+    const style = document.querySelector('#style')
+    if (darkTheme == 'dark') {
         style.href = '/static/css/style-dark.css'
-        THEME = 'dark';
     }
     else {
         style.href = '/static/css/style-light.css'
-        THEME = 'light';
+    }
+}
+
+determineTheme()
+
+const themeToggler = document.querySelector('#theme-toggler')
+themeToggler.addEventListener('click', () => {
+    if (window.sessionStorage.getItem('theme') == 'dark') {
+        window.sessionStorage.setItem('theme', 'light')
+        determineTheme()
+    }
+    else {
+        window.sessionStorage.setItem('theme', 'dark')
+        determineTheme()
     }
 })
-
-
-
-
