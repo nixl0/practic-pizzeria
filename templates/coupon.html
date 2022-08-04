@@ -6,5 +6,23 @@
 {% block title %}Купоны{% endblock title %}
 
 {% block body %}
-<h1>Купоны</h1>
+<div class="discount">
+    <div class="wrapper">
+        <div class="discount__container">
+            
+            {% for discount in discounts %}
+                <div class="discount__deal">
+                    
+                    {% with '/image/'|add:discount.pic|add:'.jpg' as pic %}
+                        <img class="deal__pic" src="{% static pic %}" alt="discount pic">
+                    {% endwith %}
+
+                    <h1 class="deal__headline">{{ discount.headline }}</h1>
+                    <p class="deal__body">{{ discount.body }}</p>
+                </div>
+            {% endfor %}
+                
+        </div>
+    </div>
+</div>
 {% endblock body %}

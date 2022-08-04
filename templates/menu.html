@@ -27,7 +27,7 @@
         <div class="foods__container">
             {% for product in products %}
 
-                <div class="foods__serving">
+                <div class="foods__serving" data-modal-target="#modal" data-category="{{ product.category.codename }}">
                     
                     {% with '/image/'|add:product.pic|add:'.jpg' as pic %}
                         <img class="serving__pic" src="{% static pic %}" alt="pizza pic">
@@ -36,6 +36,8 @@
                     <div class="serving__text">
                         <h1 class="serving__name">{{ product.name }}</h1>
                         <p class="serving__desc">{{ product.desc }}</p>
+                    </div>
+                    <div class="serving__info">
                         <h5 class="serving__weight">{{ product.weight }} гр.</h5>
                         <h2 class="serving__price">{{ product.price }} ₽</h2>
                     </div>
@@ -44,6 +46,15 @@
         </div>
     </div>
 </div>
+
+<div class="modal" id="modal">
+    <img class="modal__pic" src="{% static 'image/pizza_american.jpg' %}" alt="">
+    <h1 class="modal__name">empty</h1>
+    <p class="modal__desc">empty</p>
+    <h5 class="modal__weight">empty</h5>
+    <h2 class="modal__price">empty</h2>
+</div>
+<div id="overlay"></div>
 
 <script src="{% static 'js/menu.js' %}"></script>
 {% endblock body %}

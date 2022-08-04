@@ -4,7 +4,9 @@
     --color-gray: #AAAAAA;
     --color-redimmed: #DDD;
     --color-inverted: #000000;
+    --color-inverted2: #FFF;
     --color-red: #e64500;
+    --color-black: #000;
     --duration-short: 0.2s;
 }
 
@@ -38,34 +40,6 @@ a:hover {
 .a-svg:hover {
     fill: var(--color-red);
     cursor: pointer;
-}
-
-.bgcolor-dimmed {
-    background-color: var(--color-dimmed);
-}
-
-.ts-color-bg {
-    color: var(--color-background);
-}
-
-.ts-color-inverted {
-    color: var(--color-inverted);
-}
-
-.ts-m {
-    font-size: 1em;
-}
-
-.ts-ml {
-    font-size: 1.2em;
-}
-
-.ts-l {
-    font-size: 1.4em;
-}
-
-.ts-xl {
-    font-size: 1.6em;
 }
 
 .wrapper {
@@ -131,6 +105,12 @@ a:hover {
     background-color: var(--color-red);
 }
 
+#shortcut__text {
+    color: var(--color-background);
+    font-size: 1.2em;
+    transition-duration: var(--duration-short);
+}
+
 .error {
     display: flex;
     flex-direction: column;
@@ -141,6 +121,22 @@ a:hover {
 .error * {
     padding: 20px 0 0 0;
     color: var(--color-inverted);
+}
+
+footer {
+    background-color: var(--color-inverted);
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+    padding: 0 50px;
+}
+
+.footer__text {
+    color: var(--color-redimmed);
 }
 
 .foods {
@@ -166,6 +162,10 @@ a:hover {
     background-color: var(--color-red);
 }
 
+.foods__category:hover .foods__category__text {
+    color: var(--color-inverted2);
+}
+
 .foods__category__input {
     display: none;
 }
@@ -183,7 +183,7 @@ a:hover {
 .notice__info {
     flex: 1;
     display: flex;
-    margin: 100px 0 0 0;
+    margin: 50px 0 50px 0;
 }
 
 .info__picture {
@@ -258,20 +258,126 @@ a:hover {
     cursor: pointer;
 }
 
+.foods__serving.hide {
+    display: none;
+}
+
 .serving__pic {
     width: 100%;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
     border-radius: 20px 20px 0 0;
 }
 
 .serving__text {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 35px;
 }
 
-.serving__name,
-.serving__desc,
-.serving__weight,
+.serving__name {
+    color: var(--color-background);
+    margin-top: 10px;
+}
+
+.serving__desc {
+    color: var(--color-background);
+    margin-top: 10px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.serving__info {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 20px 20px 20px;
+}
+
+.serving__weight {
+    color: var(--color-background);
+}
+
 .serving__price {
     color: var(--color-background);
-    padding: 0 0 10px 0;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: var(--duration-short) ease-in-out;
+    background-color: var(--color-background);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal__pic {
+    width: 70%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.modal__name,
+.modal__desc,
+.modal__weight,
+.modal__price {
+    color: var(--color-inverted);
+    padding: 20px 0 0 0;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: var(--duration-short) ease-in-out;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.discount__container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.discount__deal {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.discount__deal * {
+    margin: 20px 0 0 0;
+    color: var(--color-inverted);
+}
+
+.deal__pic {
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
 }

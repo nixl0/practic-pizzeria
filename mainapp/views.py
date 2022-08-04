@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from mainapp.models import Notice, Product, ProductCategory
+from mainapp.models import Discount, Notice, Product, ProductCategory
 
 def index(request):
     try:
@@ -10,7 +10,11 @@ def index(request):
         return render(request, 'error.html')
 
 def discount(request):
-    return render(request, 'discount.html')
+    try:
+        discounts = Discount.objects.all()
+        return render(request, 'discount.html', {'discounts': discounts})
+    except:
+        return render(request, 'error.html')
 
 def menu(request):
     try:
@@ -21,10 +25,18 @@ def menu(request):
         return render(request, 'error.html')
 
 def coupon(request):
-    return render(request, 'coupon.html')
+    try:
+        discounts = Discount.objects.all()
+        return render(request, 'coupon.html', {'discounts': discounts})
+    except:
+        return render(request, 'error.html')
 
 def news(request):
-    return render(request, 'news.html')
+    try:
+        discounts = Discount.objects.all()
+        return render(request, 'news.html', {'discounts': discounts})
+    except:
+        return render(request, 'error.html')
 
 def error(request):
     return render(request, 'error.html')

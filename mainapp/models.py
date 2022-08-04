@@ -18,3 +18,8 @@ class Product(models.Model):
     price = models.SmallIntegerField()
     pic = models.CharField(max_length=1000)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, null=True)
+
+class Discount(models.Model):
+    headline = models.CharField(max_length=2000)
+    body = models.CharField(max_length=65000)
+    pic = models.CharField(max_length=1000)
